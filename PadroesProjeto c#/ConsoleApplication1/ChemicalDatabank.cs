@@ -13,7 +13,7 @@ namespace Adapter.RealWorld
         /// <summary>
         /// Entry point into console application.
         /// </summary>
-        private static void Main()
+        public static void Main()
         {
             // Non-adapted chemical compound
 
@@ -157,7 +157,7 @@ namespace Adapter.RealWorld
                 }
             }
 
-                // Boiling Point
+            // Boiling Point
 
             else
             {
