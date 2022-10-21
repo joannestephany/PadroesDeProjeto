@@ -1,2 +1,5 @@
 # PadroesDeProjeto
-Refatorando - Atividade proposta em Engenharia de Softeare II
+
+🇧🇷PT-BR: Repositório destinado a treino de padrões de projeto
+
+🇬🇧ENG : Repository for training design patterns
