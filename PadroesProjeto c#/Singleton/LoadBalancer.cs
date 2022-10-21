@@ -14,7 +14,7 @@ namespace Singleton.RealWorld
         /// <summary>
         /// Entry point into console application.
         /// </summary>
-        private static void Main()
+        public static void Main()
         {
             LoadBalancer b1 = LoadBalancer.GetLoadBalancer();
 
@@ -24,10 +24,12 @@ namespace Singleton.RealWorld
 
             LoadBalancer b4 = LoadBalancer.GetLoadBalancer();
 
+            LoadBalancer b5 = LoadBalancer.GetLoadBalancer(); //atvdd
+
 
             // Same instance?
 
-            if (b1 == b2 && b2 == b3 && b3 == b4)
+            if (b1 == b2 && b2 == b3 && b3 == b4 && b4 == b5)
             {
                 Console.WriteLine("Same instance\n");
             }
@@ -84,6 +86,9 @@ namespace Singleton.RealWorld
             _servers.Add("ServerV");
 
             _servers.Add("ServerVI");
+
+            _servers.Add("ServerVII"); //atvdd
+
         }
 
 
