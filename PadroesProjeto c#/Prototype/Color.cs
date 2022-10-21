@@ -14,7 +14,7 @@ namespace Prototype.RealWorld
         /// <summary>
         /// Entry point into console application.
         /// </summary>
-        private static void Main()
+        public static void Main()
         {
             var colormanager = new ColorManager();
 
@@ -28,6 +28,7 @@ namespace Prototype.RealWorld
             colormanager["blue"] = new Color(0, 0, 255);
 
 
+
             // User adds personalized colors
 
             colormanager["angry"] = new Color(255, 54, 0);
@@ -36,7 +37,12 @@ namespace Prototype.RealWorld
 
             colormanager["flame"] = new Color(211, 34, 20);
 
-            colormanager["orange"] = new Color(100, 33, 47); 
+            colormanager["orange"] = new Color(100, 33, 47);
+
+   
+            colormanager["purple"] = new Color(230, 230, 250); //atvdd
+
+            colormanager["pink"] = new Color(255, 192, 203); //atvdd
 
 
             // User clones selected colors
@@ -48,6 +54,11 @@ namespace Prototype.RealWorld
             var color3 = colormanager["flame"].Clone() as Color;
 
             var color4 = colormanager["orange"].Clone() as Color;
+
+            
+            var color5 = colormanager["purple"].Clone() as Color; //atvdd
+
+            var color6 = colormanager["pink"].Clone() as Color; //atvdd
 
 
             // Wait for user

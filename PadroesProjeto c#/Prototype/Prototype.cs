@@ -20,14 +20,14 @@ namespace Prototype.Structural
 
             var p1 = new ConcretePrototype1("I");
 
-            var c1 = (ConcretePrototype1) p1.Clone();
+            var c1 = (ConcretePrototype1) p1.Clone(); //criou uma nova instancia que foi um clone no p1
 
             Console.WriteLine("Cloned: {0}", c1.Id);
 
 
             var p2 = new ConcretePrototype2("II");
 
-            var c2 = (ConcretePrototype2) p2.Clone();
+            var c2 = (ConcretePrototype2) p2.Clone(); //criou uma nova instancia que foi um clone no p2
 
             Console.WriteLine("Cloned: {0}", c2.Id);
 
