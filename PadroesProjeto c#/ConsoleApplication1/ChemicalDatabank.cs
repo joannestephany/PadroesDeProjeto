@@ -39,6 +39,11 @@ namespace Adapter.RealWorld
             ethanol.Display();
 
 
+            Compound propanal = new RichCompound("Propanal"); //atvdd
+
+            propanal.Display();
+
+
             // Wait for user
 
             Console.ReadKey();
@@ -144,6 +149,9 @@ namespace Adapter.RealWorld
                     case "ethanol":
                         return -114.1f;
 
+                    case "propanal":
+                        return -80.0f;
+
                     default:
                         return 0f;
                 }
@@ -163,6 +171,9 @@ namespace Adapter.RealWorld
 
                     case "ethanol":
                         return 78.3f;
+
+                    case "propanal":
+                        return 48.8f;
 
                     default:
                         return 0f;
@@ -184,6 +195,9 @@ namespace Adapter.RealWorld
                 case "ethanol":
                     return "C2H5OH";
 
+                case "propanal":
+                    return "C3H6O";
+
                 default:
                     return "";
             }
@@ -202,6 +216,9 @@ namespace Adapter.RealWorld
 
                 case "ethanol":
                     return 46.0688;
+
+                case "propanal":
+                    return 58.080;
 
                 default:
                     return 0d;
