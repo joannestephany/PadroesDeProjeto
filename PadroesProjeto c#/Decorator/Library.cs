@@ -11,10 +11,12 @@ namespace Decorator.RealWorld
     /// </summary>
     internal class MainApp
     {
+        private static LibraryItem barrowvideo;
+
         /// <summary>
         /// Entry point into console application.
         /// </summary>
-        private static void Main()
+        public static void Main()
         {
             // Create book
 
