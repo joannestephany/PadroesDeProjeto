@@ -24,6 +24,7 @@ namespace Composite.Structural
 
             root.Add(new Leaf("Leaf B"));
 
+            // Create a branch
 
             var comp = new Composite("Composite X");
 
