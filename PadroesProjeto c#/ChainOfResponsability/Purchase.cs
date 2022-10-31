@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Chain.RealWorld
 {
@@ -14,6 +14,7 @@ namespace Chain.RealWorld
         private static void Main()
         {
             // Setup Chain of Responsibility
+            Approver dosesa = new ChefeImediato();
 
             Approver larry = new Director();
 
@@ -21,6 +22,7 @@ namespace Chain.RealWorld
 
             Approver tammy = new President();
 
+            dosesa.SetSuccessor(larry);
 
             larry.SetSuccessor(sam);
 
@@ -28,8 +30,12 @@ namespace Chain.RealWorld
 
 
             // Generate and process purchase requests
+            var p = new Purchase(2033, 100.00, "Project TchucuTcha");
 
-            var p = new Purchase(2034, 350.00, "Assets");
+            dosesa.ProcessRequest(p);
+
+
+            p = new Purchase(2034, 3350.00, "Assets");
 
             larry.ProcessRequest(p);
 
@@ -43,6 +49,8 @@ namespace Chain.RealWorld
 
             larry.ProcessRequest(p);
 
+
+            
 
             // Wait for user
 
@@ -68,7 +76,22 @@ namespace Chain.RealWorld
         public abstract void ProcessRequest(Purchase purchase);
     }
 
+    internal class ChefeImediato : Approver
+    {
+        public override void ProcessRequest(Purchase purchase)
+        {
+            if (purchase.Amount < 5000.0) //
+            {
+                Console.WriteLine("{0} approved request# {1}",
+                                  GetType().Name, purchase.Number);
+            }
 
+            else if (successor != null)
+            {
+                successor.ProcessRequest(purchase);
+            }
+        }
+    }
     /// <summary>
     /// The 'ConcreteHandler' class
     /// </summary>
@@ -76,7 +99,7 @@ namespace Chain.RealWorld
     {
         public override void ProcessRequest(Purchase purchase)
         {
-            if (purchase.Amount < 10000.0)
+            if (purchase.Amount < 10000.0) //
             {
                 Console.WriteLine("{0} approved request# {1}",
                                   GetType().Name, purchase.Number);
