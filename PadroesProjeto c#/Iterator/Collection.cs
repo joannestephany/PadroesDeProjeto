@@ -38,6 +38,8 @@ namespace Iterator.RealWorld
 
             collection[8] = new Item("Item 8");
 
+            collection[9] = new Item("Item 9"); // adicionei pra fazer o teste de 3 em 3
+
 
             // Create iterator
 
@@ -46,7 +48,7 @@ namespace Iterator.RealWorld
 
             // Skip every other item
 
-            iterator.Step = 2;
+            iterator.Step = 2; // pula de 2 em 2
 
 
             Console.WriteLine("Iterating over collection:");
