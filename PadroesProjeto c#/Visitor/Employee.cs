@@ -112,7 +112,7 @@ namespace Visitor.RealWorld
 
             // Provide 3 extra vacation days
 
-            Console.WriteLine("{0} {1}'s new vacation days: {2}",
+            Console.WriteLine("{0} {1}'s new vacation days: {9}",
                               employee.GetType().Name, employee.Name,
                               employee.VacationDays);
         }
