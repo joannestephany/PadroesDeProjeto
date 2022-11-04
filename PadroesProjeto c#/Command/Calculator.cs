@@ -9,7 +9,7 @@ namespace Command.RealWorld
     /// MainApp startup class for Real-World
     /// Command Design Pattern.
     /// </summary>
-    internal class MainApp
+    internal class MainApp 
     {
         /// <summary>
         /// Entry point into console application.
@@ -29,7 +29,7 @@ namespace Command.RealWorld
 
             user.Compute('*', 10);
 
-            user.Compute('*', 7);
+            user.Compute('/', 7);
 
             
 
@@ -131,6 +131,9 @@ namespace Command.RealWorld
                 case '*':
                     return '/';
 
+                case '/':
+                    return '*';
+
                 default:
                     throw new
                         ArgumentException("@operator");
@@ -161,6 +164,10 @@ namespace Command.RealWorld
 
                 case '*':
                     _curr *= operand;
+                    break;
+
+                case '/':
+                    _curr /= operand;
                     break;
             }
 
