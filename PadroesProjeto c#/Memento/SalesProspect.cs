@@ -21,6 +21,8 @@ namespace Memento.RealWorld
 
             s.Phone = "(412) 256-0990";
 
+            s.PhoneCelular = "(555) 256-0990";
+
             s.Budget = 25000.0;
 
 
@@ -36,6 +38,8 @@ namespace Memento.RealWorld
             s.Name = "Leo Welch";
 
             s.Phone = "(310) 209-7111";
+
+            s.Phone = "(555) 209-7111";
 
             s.Budget = 1000000.0;
 
@@ -65,6 +69,7 @@ namespace Memento.RealWorld
         private string _name;
 
         private string _phone;
+        private string _phoneCelular;
 
 
         // Gets or sets name
@@ -96,6 +101,20 @@ namespace Memento.RealWorld
             }
         }
 
+        // Gets or sets phoneCelular
+
+        public string PhoneCelular
+        {
+            get { return _phoneCelular; }
+
+            set
+            {
+                _phone = value;
+
+                Console.WriteLine("Phone Celular: " + _phoneCelular);
+            }
+        }
+
 
         // Gets or sets budget
 
@@ -118,7 +137,7 @@ namespace Memento.RealWorld
         {
             Console.WriteLine("\nSaving state --\n");
 
-            var next = new Memento(_name, _phone, _budget);
+            var next = new Memento(_name, _phone, _phoneCelular, _budget);
             atual.NextMemento = next;
             next.PreviousMemento = atual;
 
@@ -145,6 +164,8 @@ namespace Memento.RealWorld
 
             Phone = memento.Phone;
 
+            PhoneCelular = memento.PhoneCelular;
+
             Budget = memento.Budget;
         }
     }
@@ -157,11 +178,13 @@ namespace Memento.RealWorld
     {
         // Constructor
 
-        public Memento(string name, string phone, double budget)
+        public Memento(string name, string phone, string phoneCelular, double budget)
         {
             Name = name;
 
             Phone = phone;
+
+            PhoneCelular = phoneCelular;
 
             Budget = budget;
         }
@@ -175,6 +198,10 @@ namespace Memento.RealWorld
         // Gets or set phone
 
         public string Phone { get; set; }
+
+        // Gets or set phoneCelular
+
+        public string PhoneCelular { get; set; }
 
 
         // Gets or sets budget
