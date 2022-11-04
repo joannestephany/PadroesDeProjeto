@@ -22,17 +22,17 @@ namespace State.RealWorld
 
             // Apply financial transactions
 
-            account.Deposit(500.0);
+            account.Deposit(50000000.0);
 
-            account.Deposit(300.0);
+            account.Deposit(300000000.0);
 
-            account.Deposit(550.0);
+            account.Deposit(55000000.0);
 
             account.PayInterest();
 
-            account.Withdraw(2000.00);
+            account.Withdraw(200000.00);
 
-            account.Withdraw(1100.00);
+            account.Withdraw(11000000000.00);
 
 
             // Wait for user
@@ -148,7 +148,7 @@ namespace State.RealWorld
         {
             if (balance > upperLimit)
             {
-                account.State = new SilverState(this);
+                account.State = new DiamondState(this);
             }
         }
     }
@@ -157,7 +157,7 @@ namespace State.RealWorld
     /// <summary>
     /// A 'ConcreteState' class
     /// <remarks>
-    /// Silver indicates a non-interest bearing state
+    /// Diamond indicates a non-interest bearing state
     /// </remarks>
     /// </summary>
     internal class SilverState : State
@@ -228,6 +228,11 @@ namespace State.RealWorld
             {
                 account.State = new GoldState(this);
             }
+
+            else
+            {
+                account.State = new DiamondState(this);
+            }
         }
     }
 
@@ -266,7 +271,7 @@ namespace State.RealWorld
 
             lowerLimit = 1000.0;
 
-            upperLimit = 10000000.0;
+            upperLimit = 1000000.0;
         }
 
 
@@ -305,9 +310,90 @@ namespace State.RealWorld
             {
                 account.State = new SilverState(this);
             }
+
+            else
+            {
+                account.State = new DiamondState(this);
+            }
         }
     }
+//
+    internal class DiamondState : State
+    {
+        // Overloaded constructors
 
+
+        public DiamondState(State state) :
+            this(state.Balance, state.Account)
+        {
+        }
+
+
+        public DiamondState(double balance, Account account)
+        {
+            this.balance = balance;
+
+            this.account = account;
+
+            Initialize();
+        }
+
+
+        private void Initialize()
+        {
+            // Should come from a datasource
+
+            interest = 0.07;
+
+            lowerLimit = 100000.0;
+
+            upperLimit = 10000000000.0;
+        }
+
+
+        public override void Deposit(double amount)
+        {
+            balance += amount;
+
+            StateChangeCheck();
+        }
+
+
+        public override void Withdraw(double amount)
+        {
+            balance -= amount;
+
+            StateChangeCheck();
+        }
+
+
+        public override void PayInterest()
+        {
+            balance += interest * balance;
+
+            StateChangeCheck();
+        }
+
+
+        private void StateChangeCheck()
+        {
+            if (balance < lowerLimit)
+            {
+                account.State = new RedState(this);
+            }
+
+            else if (balance > upperLimit)
+            {
+                account.State = new GoldState(this);
+            }
+            else
+            {
+                account.State = new DiamondState(this);
+            }
+
+        }
+    }
+//
 
     /// <summary>
     /// The 'Context' class
@@ -322,7 +408,7 @@ namespace State.RealWorld
 
         public Account(string owner)
         {
-            // New accounts are 'Silver' by default
+            // New accounts are 'SILVER' by default
 
             _owner = owner;
 
