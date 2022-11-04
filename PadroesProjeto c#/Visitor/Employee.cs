@@ -35,6 +35,8 @@ namespace Visitor.RealWorld
 
             e.Accept(new FaltasVisitor());
 
+            e.Accept(new FeriasVisitor());
+
 
             // Wait for user
 
@@ -112,7 +114,7 @@ namespace Visitor.RealWorld
 
             // Provide 3 extra vacation days
 
-            Console.WriteLine("{0} {1}'s new vacation days: {9}",
+            Console.WriteLine("{0} {1}'s new vacation days: {2}",
                               employee.GetType().Name, employee.Name,
                               employee.VacationDays);
         }
@@ -120,6 +122,24 @@ namespace Visitor.RealWorld
         #endregion
     }
 
+    internal class FeriasVisitor : IVisitor
+    {
+        #region IVisitor Members
+
+        public void Visit(Element element)
+        {
+            var employee = element as Employee;
+
+
+            // Provide 3 extra vacation days
+
+            Console.WriteLine("{0} {1}'s new vacation days: {2}",
+                              employee.GetType().Name, employee.Name,
+                              employee.VacationDays);
+        }
+
+        #endregion
+    }
 
     /// <summary>
     /// The 'Element' abstract class
